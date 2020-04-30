@@ -51,33 +51,33 @@ namespace ZEQP.WebHook.Robot.Service
             {
                 mdSb.AppendLine($"# {commit.message}{Environment.NewLine}");
                 mdSb.AppendLine($"> [{commit.author.name} {commit.timestamp.AddHours(8)}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/{commit.id}/commitdetail){Environment.NewLine}");
-                if (commit.added != null && commit.added.Length > 0)
-                {
-                    mdSb.AppendLine($"> Added{Environment.NewLine}");
-                    foreach (var item in commit.added)
-                    {
-                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
-                    }
-                    mdSb.AppendLine($"{Environment.NewLine}");
-                }
-                if (commit.modified != null && commit.modified.Length > 0)
-                {
-                    mdSb.AppendLine($"> Modified{Environment.NewLine}");
-                    foreach (var item in commit.modified)
-                    {
-                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
-                    }
-                    mdSb.AppendLine($"{Environment.NewLine}");
-                }
-                if (commit.removed != null && commit.removed.Length > 0)
-                {
-                    mdSb.AppendLine($"> Removed{Environment.NewLine}");
-                    foreach (var item in commit.removed)
-                    {
-                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
-                    }
-                    mdSb.AppendLine($"{Environment.NewLine}");
-                }
+                //if (commit.added != null && commit.added.Length > 0)
+                //{
+                //    mdSb.AppendLine($"> Added{Environment.NewLine}");
+                //    foreach (var item in commit.added)
+                //    {
+                //        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
+                //    }
+                //    mdSb.AppendLine($"{Environment.NewLine}");
+                //}
+                //if (commit.modified != null && commit.modified.Length > 0)
+                //{
+                //    mdSb.AppendLine($"> Modified{Environment.NewLine}");
+                //    foreach (var item in commit.modified)
+                //    {
+                //        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
+                //    }
+                //    mdSb.AppendLine($"{Environment.NewLine}");
+                //}
+                //if (commit.removed != null && commit.removed.Length > 0)
+                //{
+                //    mdSb.AppendLine($"> Removed{Environment.NewLine}");
+                //    foreach (var item in commit.removed)
+                //    {
+                //        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
+                //    }
+                //    mdSb.AppendLine($"{Environment.NewLine}");
+                //}
             }
             mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/home)*{Environment.NewLine}");
             mdSb.AppendLine($"> *Project [{model.project.name}](https://devcloud.huaweicloud.com/scrum/{config.Project}/home)*{Environment.NewLine}");
