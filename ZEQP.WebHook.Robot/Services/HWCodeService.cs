@@ -54,29 +54,29 @@ namespace ZEQP.WebHook.Robot.Service
                 if (commit.added != null && commit.added.Length > 0)
                 {
                     mdSb.AppendLine($"> Added{Environment.NewLine}");
-                    foreach (var item in commit.added.Take(10))
+                    foreach (var item in commit.added)
                     {
-                        var name = item.Split('/').LastOrDefault();
-                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
+                        mdSb.AppendLine($"- {item}");
                     }
+                    mdSb.AppendLine($"{Environment.NewLine}");
                 }
                 if (commit.modified != null && commit.modified.Length > 0)
                 {
                     mdSb.AppendLine($"> Modified{Environment.NewLine}");
-                    foreach (var item in commit.modified.Take(10))
+                    foreach (var item in commit.modified)
                     {
-                        var name = item.Split('/').LastOrDefault();
-                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
+                        mdSb.AppendLine($"- {item}");
                     }
+                    mdSb.AppendLine($"{Environment.NewLine}");
                 }
                 if (commit.removed != null && commit.removed.Length > 0)
                 {
                     mdSb.AppendLine($"> Removed{Environment.NewLine}");
-                    foreach (var item in commit.removed.Take(10))
+                    foreach (var item in commit.removed)
                     {
-                        var name = item.Split('/').LastOrDefault();
-                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
+                        mdSb.AppendLine($"- {item}");
                     }
+                    mdSb.AppendLine($"{Environment.NewLine}");
                 }
             }
             mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}]({model.repository.homepage})*{Environment.NewLine}");
