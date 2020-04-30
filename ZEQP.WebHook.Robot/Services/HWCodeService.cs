@@ -54,7 +54,7 @@ namespace ZEQP.WebHook.Robot.Service
                 if (commit.added != null && commit.added.Length > 0)
                 {
                     mdSb.AppendLine($"> Added{Environment.NewLine}");
-                    foreach (var item in commit.added.Take(5))
+                    foreach (var item in commit.added.Take(10))
                     {
                         mdSb.AppendLine($"- {item}{Environment.NewLine}");
                     }
@@ -62,7 +62,7 @@ namespace ZEQP.WebHook.Robot.Service
                 if (commit.modified != null && commit.modified.Length > 0)
                 {
                     mdSb.AppendLine($"> Modified{Environment.NewLine}");
-                    foreach (var item in commit.modified.Take(5))
+                    foreach (var item in commit.modified.Take(10))
                     {
                         mdSb.AppendLine($"- {item}{Environment.NewLine}");
                     }
@@ -70,14 +70,14 @@ namespace ZEQP.WebHook.Robot.Service
                 if (commit.removed != null && commit.removed.Length > 0)
                 {
                     mdSb.AppendLine($"> Removed{Environment.NewLine}");
-                    foreach (var item in commit.removed.Take(5))
+                    foreach (var item in commit.removed.Take(10))
                     {
                         mdSb.AppendLine($"- {item}{Environment.NewLine}");
                     }
                 }
             }
-            mdSb.AppendLine($"*{model.event_name} [{model.repository.name}]({model.repository.homepage})*{Environment.NewLine}");
-            mdSb.AppendLine($"*[{model.project.name}]({model.project.homepage})*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}]({model.repository.homepage})*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Project [{model.project.name}]({model.project.homepage})*{Environment.NewLine}");
             md.text = mdSb.ToString();
             result.markdown = md;
             return result;
