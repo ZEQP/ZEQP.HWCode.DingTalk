@@ -56,7 +56,8 @@ namespace ZEQP.WebHook.Robot.Service
                     mdSb.AppendLine($"> Added{Environment.NewLine}");
                     foreach (var item in commit.added.Take(10))
                     {
-                        mdSb.AppendLine($"- {item}{Environment.NewLine}");
+                        var name = item.Split('/').LastOrDefault();
+                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
                     }
                 }
                 if (commit.modified != null && commit.modified.Length > 0)
@@ -64,7 +65,8 @@ namespace ZEQP.WebHook.Robot.Service
                     mdSb.AppendLine($"> Modified{Environment.NewLine}");
                     foreach (var item in commit.modified.Take(10))
                     {
-                        mdSb.AppendLine($"- {item}{Environment.NewLine}");
+                        var name = item.Split('/').LastOrDefault();
+                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
                     }
                 }
                 if (commit.removed != null && commit.removed.Length > 0)
@@ -72,7 +74,8 @@ namespace ZEQP.WebHook.Robot.Service
                     mdSb.AppendLine($"> Removed{Environment.NewLine}");
                     foreach (var item in commit.removed.Take(10))
                     {
-                        mdSb.AppendLine($"- {item}{Environment.NewLine}");
+                        var name = item.Split('/').LastOrDefault();
+                        mdSb.AppendLine($"- {name}{Environment.NewLine}");
                     }
                 }
             }

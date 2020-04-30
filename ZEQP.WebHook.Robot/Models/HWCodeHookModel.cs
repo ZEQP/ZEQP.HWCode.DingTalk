@@ -17,12 +17,12 @@ namespace ZEQP.WebHook.Robot.Models
         public string after { get; set; }
         public string _ref { get; set; }
         public string checkout_sha { get; set; }
-        public object message { get; set; }
+        public string message { get; set; }
         public int user_id { get; set; }
         public string user_name { get; set; }
         public string user_username { get; set; }
         public string user_email { get; set; }
-        public object user_avatar { get; set; }
+        public string user_avatar { get; set; }
         public int project_id { get; set; }
         public HWCodeHookProject project { get; set; }
         public HWCodeHookCommit[] commits { get; set; }
@@ -36,14 +36,14 @@ namespace ZEQP.WebHook.Robot.Models
         public string name { get; set; }
         public string description { get; set; }
         public string web_url { get; set; }
-        public object avatar_url { get; set; }
+        public string avatar_url { get; set; }
         public string git_ssh_url { get; set; }
         public string git_http_url { get; set; }
         public string _namespace { get; set; }
         public int visibility_level { get; set; }
         public string path_with_namespace { get; set; }
         public string default_branch { get; set; }
-        public object ci_config_path { get; set; }
+        public string ci_config_path { get; set; }
         public string homepage { get; set; }
         public string url { get; set; }
         public string ssh_url { get; set; }
@@ -68,9 +68,9 @@ namespace ZEQP.WebHook.Robot.Models
         public DateTime timestamp { get; set; }
         public string url { get; set; }
         public HWCodeHookAuthor author { get; set; }
-        public object[] added { get; set; }
+        public string[] added { get; set; }
         public string[] modified { get; set; }
-        public object[] removed { get; set; }
+        public string[] removed { get; set; }
     }
 
     public class HWCodeHookAuthor
