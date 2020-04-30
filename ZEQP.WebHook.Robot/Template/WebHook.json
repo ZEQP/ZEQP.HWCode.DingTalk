@@ -1,0 +1,60 @@
+{
+    "object_kind": "push",
+    "event_name": "push",
+    "before": "dae9525fda814bf59dfd0f981af697e7223b0324",
+    "after": "c6fb8555ed67c95f6baf778a7df306dc805e457b",
+    "ref": "refs/heads/master",
+    "checkout_sha": "c6fb8555ed67c95f6baf778a7df306dc805e457b",
+    "message": null,
+    "user_id": 79711,
+    "user_name": "liuju",
+    "user_username": "f88dc8cff4714851b3436e004de7f7f6",
+    "user_email": "f88dc8cff4714851b3436e004de7f7f6@huawei.com",
+    "user_avatar": null,
+    "project_id": 654768,
+    "project": {
+        "id": 654768,
+        "name": "ZEQP_PMS",
+        "description": "ZEQP_PMS",
+        "web_url": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS",
+        "avatar_url": null,
+        "git_ssh_url": "git@codehub.devcloud.huaweicloud.com:znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "git_http_url": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "namespace": "znznMES_glht_liuju00001",
+        "visibility_level": 0,
+        "path_with_namespace": "znznMES_glht_liuju00001/ZEQP_PMS",
+        "default_branch": "master",
+        "ci_config_path": null,
+        "homepage": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS",
+        "url": "git@codehub.devcloud.huaweicloud.com:znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "ssh_url": "git@codehub.devcloud.huaweicloud.com:znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "http_url": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS.git"
+    },
+    "commits": [
+        {
+            "id": "c6fb8555ed67c95f6baf778a7df306dc805e457b",
+            "message": "–ﬁ∏ƒ≈‰÷√\n",
+            "timestamp": "2020-04-30T05:24:10Z",
+            "url": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS/commit/c6fb8555ed67c95f6baf778a7df306dc805e457b",
+            "author": {
+                "name": "¡ıæﬁ",
+                "email": "liuju150@outlook.com"
+            },
+            "added": [],
+            "modified": [
+                "src/Coldairarrow.Web/vue.config.js"
+            ],
+            "removed": []
+        }
+    ],
+    "total_commits_count": 1,
+    "repository": {
+        "name": "ZEQP_PMS",
+        "url": "git@codehub.devcloud.huaweicloud.com:znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "description": "ZEQP_PMS",
+        "homepage": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS",
+        "git_http_url": "https://codehub.devcloud.huaweicloud.com/znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "git_ssh_url": "git@codehub.devcloud.huaweicloud.com:znznMES_glht_liuju00001/ZEQP_PMS.git",
+        "visibility_level": 0
+    }
+}
