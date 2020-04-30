@@ -7,6 +7,7 @@ namespace ZEQP.WebHook.Robot.Models
 {
     public class DingTalkConfig
     {
+        public string Project { get; set; }
         public string Token { get; set; }
         public string Secret { get; set; }
     }

@@ -29,7 +29,7 @@ namespace ZEQP.WebHook.Robot.Service
             var repConfig = this.Config.GetSection($"HWCodeConfig:{repositoryName}").Get<DingTalkConfig>();
             if (repConfig != null) config = repConfig;
             this.Logger.LogInformation($"配置：{repConfig.ToJson()}");
-            var resModel = this.ConvertMD(model);
+            var resModel = this.ConvertMD(model, config);
             var resJson = resModel.ToJson();
             this.Logger.LogInformation($"发送数据：{Environment.NewLine}{resJson}");
             var timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
@@ -40,7 +40,7 @@ namespace ZEQP.WebHook.Robot.Service
             var resultBody = await result.Content.ReadAsStringAsync();
             this.Logger.LogInformation($"返回数据：{Environment.NewLine}{result}{Environment.NewLine}{resultBody}");
         }
-        public DingTalkResModel ConvertMD(HWCodeHookModel model)
+        public DingTalkResModel ConvertMD(HWCodeHookModel model, DingTalkConfig config)
         {
             var result = new DingTalkResModel();
             result.msgtype = "markdown";
@@ -50,13 +50,13 @@ namespace ZEQP.WebHook.Robot.Service
             foreach (var commit in model.commits)
             {
                 mdSb.AppendLine($"# {commit.message}{Environment.NewLine}");
-                mdSb.AppendLine($"> {commit.author.name} {commit.timestamp.AddHours(8)}{Environment.NewLine}");
+                mdSb.AppendLine($"> [{commit.author.name} {commit.timestamp.AddHours(8)}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/{commit.id}/commitdetail){Environment.NewLine}");
                 if (commit.added != null && commit.added.Length > 0)
                 {
                     mdSb.AppendLine($"> Added{Environment.NewLine}");
                     foreach (var item in commit.added)
                     {
-                        mdSb.AppendLine($"- {item}");
+                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
                     }
                     mdSb.AppendLine($"{Environment.NewLine}");
                 }
@@ -65,7 +65,7 @@ namespace ZEQP.WebHook.Robot.Service
                     mdSb.AppendLine($"> Modified{Environment.NewLine}");
                     foreach (var item in commit.modified)
                     {
-                        mdSb.AppendLine($"- {item}");
+                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
                     }
                     mdSb.AppendLine($"{Environment.NewLine}");
                 }
@@ -74,13 +74,13 @@ namespace ZEQP.WebHook.Robot.Service
                     mdSb.AppendLine($"> Removed{Environment.NewLine}");
                     foreach (var item in commit.removed)
                     {
-                        mdSb.AppendLine($"- {item}");
+                        mdSb.AppendLine($"- [{item}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/file?ref={model.project.default_branch}&path={Uri.EscapeDataString(item)})");
                     }
                     mdSb.AppendLine($"{Environment.NewLine}");
                 }
             }
-            mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}]({model.repository.homepage})*{Environment.NewLine}");
-            mdSb.AppendLine($"> *Project [{model.project.name}]({model.project.homepage})*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/home)*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Project [{model.project.name}](https://devcloud.huaweicloud.com/scrum/{config.Project}/home)*{Environment.NewLine}");
             md.text = mdSb.ToString();
             result.markdown = md;
             return result;
