@@ -50,7 +50,7 @@ namespace ZEQP.WebHook.Robot.Service
             foreach (var commit in model.commits)
             {
                 mdSb.AppendLine($"# {commit.message}{Environment.NewLine}");
-                mdSb.AppendLine($"> {commit.author.name} {commit.timestamp}{Environment.NewLine}");
+                mdSb.AppendLine($"> {commit.author.name} {commit.timestamp.AddHours(8)}{Environment.NewLine}");
                 if (commit.added != null && commit.added.Length > 0)
                 {
                     mdSb.AppendLine($"> Added{Environment.NewLine}");
