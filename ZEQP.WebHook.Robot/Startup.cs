@@ -28,6 +28,9 @@ namespace ZEQP.WebHook.Robot
             services.AddHttpClient<HWCodeService>(client=> {
                 client.BaseAddress = new Uri("https://oapi.dingtalk.com/");
             });
+            services.AddHttpClient<GitHubService>(client => {
+                client.BaseAddress = new Uri("https://oapi.dingtalk.com/");
+            });
             services.AddControllers()
                 .AddNewtonsoftJson();
         }
