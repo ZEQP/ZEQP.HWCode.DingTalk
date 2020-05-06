@@ -53,7 +53,7 @@ namespace ZEQP.WebHook.Robot.Service
                 mdSb.AppendLine($"> [{commit.author.name} {commit.timestamp}]({commit.url}){Environment.NewLine}");
             }
             mdSb.AppendLine($"> *Repository [{model.repository.name}]({model.repository.url})*{Environment.NewLine}");
-            mdSb.AppendLine($"> *Organization [{model.organization.login}]({model.organization.url})*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Organization [{model.organization.login}](https://github.com/{model.organization.login})*{Environment.NewLine}");
             md.text = mdSb.ToString();
             result.markdown = md;
             return result;
