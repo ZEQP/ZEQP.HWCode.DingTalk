@@ -17,7 +17,7 @@ namespace ZEQP.WebHook.Robot.Controllers
     {
         public HWCodeService HWCodeSvc { get; set; }
         public ILogger<HWCodeController> Logger { get; set; }
-        public HWCodeController(HWCodeService svc,ILogger<HWCodeController> logger)
+        public HWCodeController(HWCodeService svc, ILogger<HWCodeController> logger)
         {
             this.HWCodeSvc = svc;
             this.Logger = logger;

@@ -24,9 +24,9 @@ namespace ZEQP.WebHook.Robot.Service
         public async Task SendDingTalkMarkdown(HWCodeHookModel model)
         {
             this.Logger.LogInformation($"请求数据：{Environment.NewLine}{model.ToJson()}");
-            var config = this.Config.GetSection("HWCodeConfig:Default").Get<DingTalkConfig>();
+            var config = this.Config.GetSection("DingTalkConfig:Default").Get<DingTalkConfig>();
             var repositoryName = model.repository.name;
-            var repConfig = this.Config.GetSection($"HWCodeConfig:{repositoryName}").Get<DingTalkConfig>();
+            var repConfig = this.Config.GetSection($"DingTalkConfig:{repositoryName}").Get<DingTalkConfig>();
             if (repConfig != null) config = repConfig;
             this.Logger.LogInformation($"配置：{repConfig.ToJson()}");
             var resModel = this.ConvertMD(model, config);

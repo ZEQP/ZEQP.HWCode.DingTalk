@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using ZEQP.WebHook.Robot.Models;
+using ZEQP.WebHook.Robot.Service;
 
 namespace ZEQP.WebHook.Robot.Controllers
 {
@@ -13,9 +15,11 @@ namespace ZEQP.WebHook.Robot.Controllers
     [ApiController]
     public class GitHubController : ControllerBase
     {
+        public GitHubService CodeSvc { get; set; }
         public ILogger<GitHubController> Logger { get; set; }
-        public GitHubController(ILogger<GitHubController> logger)
+        public GitHubController(GitHubService svc, ILogger<GitHubController> logger)
         {
+            this.CodeSvc = svc;
             this.Logger = logger;
         }
 
@@ -24,7 +28,8 @@ namespace ZEQP.WebHook.Robot.Controllers
         {
             var json = JsonConvert.SerializeObject(body);
             this.Logger.LogInformation($"接收数据：{Environment.NewLine}{json}");
-            return Task.CompletedTask;
+            var model = JsonConvert.DeserializeObject<GitHubPushModel>(json);
+            return this.CodeSvc.SendDingTalkMarkdown(model);
         }
     }
 }
