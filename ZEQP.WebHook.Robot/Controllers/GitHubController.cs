@@ -28,8 +28,16 @@ namespace ZEQP.WebHook.Robot.Controllers
         {
             var json = JsonConvert.SerializeObject(body);
             this.Logger.LogInformation($"接收数据：{Environment.NewLine}{json}");
-            var model = JsonConvert.DeserializeObject<GitHubPushModel>(json);
-            return this.CodeSvc.SendDingTalkMarkdown(model);
+            try
+            {
+                var model = JsonConvert.DeserializeObject<GitHubPushModel>(json);
+                return this.CodeSvc.SendDingTalkMarkdown(model);
+            }
+            catch (Exception ex)
+            {
+                this.Logger.LogError(ex, ex.Message);
+                return Task.CompletedTask;
+            }
         }
     }
 }
