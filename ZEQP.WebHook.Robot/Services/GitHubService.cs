@@ -45,7 +45,7 @@ namespace ZEQP.WebHook.Robot.Service
             var result = new DingTalkResModel();
             result.msgtype = "markdown";
             var md = new DingTalkResMarkdown();
-            md.title = "push";
+            md.title = $"{model.repository.name}源代码提交";
             var mdSb = new StringBuilder();
             foreach (var commit in model.commits)
             {

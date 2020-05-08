@@ -45,7 +45,7 @@ namespace ZEQP.WebHook.Robot.Service
             var result = new DingTalkResModel();
             result.msgtype = "markdown";
             var md = new DingTalkResMarkdown();
-            md.title = model.event_name;
+            md.title = $"{model.repository.name}源代码提交";
             var mdSb = new StringBuilder();
             foreach (var commit in model.commits)
             {
@@ -79,7 +79,7 @@ namespace ZEQP.WebHook.Robot.Service
                 //    mdSb.AppendLine($"{Environment.NewLine}");
                 //}
             }
-            mdSb.AppendLine($"> *Repository {model.event_name} [{model.repository.name}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/home)*{Environment.NewLine}");
+            mdSb.AppendLine($"> *Repository [{model.repository.name}](https://devcloud.huaweicloud.com/codehub/project/{config.Project}/codehub/{model.project_id}/home)*{Environment.NewLine}");
             mdSb.AppendLine($"> *Project [{model.project.name}](https://devcloud.huaweicloud.com/scrum/{config.Project}/home)*{Environment.NewLine}");
             md.text = mdSb.ToString();
             result.markdown = md;
